@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFirstTwelveBeers } from "../../api";
-import { BeerImage, BeerImageContainer, Container, DecoratorDiv, Wrapper } from "./style";
+import { BeerImage, BeerImageContainer, Container, DecoratorDiv,  Wrapper } from "./style";
 
 function BeerList() {
-  const { data: beers, isLoading } = useQuery(["beers"], getFirstTwelveBeers)
+  const { data: beers, isLoading } = useQuery(["beers"], getFirstTwelveBeers);
+
   console.log('isworking', beers)
 
   if (beers) {
     return (
-      <>
         <Wrapper>
           {beers.map(beer => {
             return (
@@ -23,7 +23,6 @@ function BeerList() {
             )
           })}
         </Wrapper>
-      </>
     )
   }
   return <></>

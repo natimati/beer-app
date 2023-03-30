@@ -1,6 +1,7 @@
 import './App.css';
-import BeerList from './components/beerList';
+import BeerList from './components/BeerList';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Header from './components/Header';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,6 +15,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Header />
       <BeerList />
     </QueryClientProvider>
   );
