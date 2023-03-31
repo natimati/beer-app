@@ -1,11 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { getFirstTwelveBeers } from "../../api";
+import { getBeers, getFirstTwelveBeers } from "../../api";
 import { BeerImage, BeerImageContainer, Container, DecoratorDiv,  Wrapper } from "./style";
+import { useSearchParams } from "react-router-dom";
 
 function BeerList() {
-  const { data: beers, isLoading } = useQuery(["beers"], getFirstTwelveBeers);
+  const [search, setSearch] = useSearchParams();
+  const currentPage = search.get('page')
+  const { data: beers, isLoading } = useQuery(["beers", currentPage], () => {
+    if (!currentPage) {
+      return getFirstTwelveBeers()
+    } 
+    return getBeers(currentPage)
+  } );
 
-  console.log('isworking', beers)
+  
 
   if (beers) {
     return (
