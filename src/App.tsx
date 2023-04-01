@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import BeerDetails from './components/BeerDetails';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +25,15 @@ const router = createBrowserRouter([
         <BeerList />
         <Pagination />
       </>
-    }
+  },
+  {
+    path: '/beer-details/:beerId',
+    element: 
+      <>
+        <Header />
+        <BeerDetails />
+      </>
+  }
 ])
 
 function App() {

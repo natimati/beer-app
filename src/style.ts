@@ -16,6 +16,13 @@ export const GlobaleStyle = createGlobalStyle`
     body {
         color: ${theme.colors.mainFontColor};
         font-family: ${theme.fontFamily.mainFont};
-        font-weight: 400;
+        font-weight: 300;
+        font-size: 18px;
+    }
+    ul {
+        margin: 0;
+    }
+    li {
+        margin: 0;
     }
 `

@@ -25,7 +25,7 @@ export interface Beer {
             attribute: string;
         }[]
         yeast: string;
-        food_pairing: string[];
-        brewers_tips: string;
     }
+    food_pairing: string[];
+    brewers_tips: string;
 }
