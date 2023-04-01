@@ -4,11 +4,11 @@ import { useSearchParams } from "react-router-dom";
 import { Container, CurrentPage, IconContainer } from "./style";
 
 function Pagination() {
-  // const [isLeftArrowVisible, setIsLeftArrowVisible] = useState(false);
   const [search, setSearch] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(Number(search.get('page')));
 
   const iconSize = 20;
+  const isLeftArrowVisible = currentPage !== 1 ? true : false;
 
   const onNextPageClick = (): void => {
     const newValue = currentPage + 1
@@ -24,7 +24,7 @@ function Pagination() {
 
   return (
     <Container>
-      <IconContainer isOnTheFirstPage={false}>
+      <IconContainer isOnTheFirstPage={!isLeftArrowVisible}>
         <FaChevronLeft size={iconSize} onClick={onPreviousPageClick} />
       </IconContainer>
       <CurrentPage>
