@@ -41,25 +41,25 @@ function BeerDetails() {
           <h4>Ingredients:</h4>
           <div>
             <p>{'Malt: '}</p>
-            <ul>{beer.ingredients.malt.map(malt => {
+            <ul>{beer.ingredients.malt.map((malt, index) => {
               return (
-                <li>{malt.name}: {malt.amount.value}, {malt.amount.unit}</li>
+                <li key={index}>{malt.name}: {malt.amount.value}, {malt.amount.unit}</li>
               )
             })}</ul>
             <p>{'Hops: '}</p>
-            <ul>{beer.ingredients.hops.map(hops => {
+            <ul>{beer.ingredients.hops.map((hops, index) => {
               return (
-                <li>{hops.name}: {hops.amount.value}, {hops.amount.unit}</li>
+                <li key={index}>{hops.name}: {hops.amount.value}, {hops.amount.unit}</li>
               )
             })}</ul>
-            <p>Yeast: <ul><li>{beer.ingredients.yeast}</li></ul></p>
+            <p>Yeast:</p> <ul><li>{beer.ingredients.yeast}</li></ul>
           </div>
         </DescritpionContainer>
         <DescritpionContainer>
           <h4>Try with:</h4>
-          <ul>{beer.food_pairing.map(food => {
+          <ul>{beer.food_pairing.map((food, index) => {
             return (
-              <li>{food}</li>
+              <li key={index}>{food}</li>
             )
           })}</ul>
         </DescritpionContainer>
