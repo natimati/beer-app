@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
     ${props => props.theme.breakpoints.mobile} {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding-top: 0;
     }
 `;
 
@@ -49,7 +50,7 @@ export const DescritpionContainer = styled.div`
     }
 `;
 
-export const BeerName = styled.h1`
+export const BeerName = styled.h2`
     margin: 0;
 `
 

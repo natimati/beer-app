@@ -31,6 +31,15 @@ export const GlobaleStyle = createGlobalStyle`
             font-size: 16px;
         }
     }
+
+    h1 {
+        font-size: 50px;
+        color: orange;
+         ${theme.breakpoints.tablet} {
+            font-size: 45px;
+         }
+    }
+
     h4 {
         font-weight: 300;
         text-decoration: underline;
