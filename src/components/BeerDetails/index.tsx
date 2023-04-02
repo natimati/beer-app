@@ -26,19 +26,19 @@ function BeerDetails() {
         <BeerName>{beer.name}</BeerName>
         <Tagline>{beer.tagline}</Tagline>
         <DescritpionContainer>
-          <p>description:</p>
+          <h4>Description:</h4>
           <p>{beer.description}</p>
         </DescritpionContainer>
         <DescritpionContainer>
-          <p>ABV:</p>
+          <h4>ABV:</h4>
           <p>{beer.abv + '%' || '-'}</p>
         </DescritpionContainer>
         <DescritpionContainer>
-          <p>IBU</p>
+          <h4>IBU</h4>
           <p>{beer.ibu || '-'}</p>
         </DescritpionContainer>
         <DescritpionContainer>
-          <p>Ingredients:</p>
+          <h4>Ingredients:</h4>
           <div>
             <p>{'Malt: '}</p>
             <ul>{beer.ingredients.malt.map(malt => {
@@ -56,7 +56,7 @@ function BeerDetails() {
           </div>
         </DescritpionContainer>
         <DescritpionContainer>
-          <p>Try with:</p>
+          <h4>Try with:</h4>
           <ul>{beer.food_pairing.map(food => {
             return (
               <li>{food}</li>
@@ -64,7 +64,7 @@ function BeerDetails() {
           })}</ul>
         </DescritpionContainer>
         <DescritpionContainer>
-          <p>Brewer tips:</p>
+          <h4>Brewer tips:</h4>
           <p>{beer.brewers_tips}</p>
         </DescritpionContainer>
       </div>

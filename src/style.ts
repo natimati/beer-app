@@ -31,6 +31,11 @@ export const GlobaleStyle = createGlobalStyle`
             font-size: 16px;
         }
     }
+    h4 {
+        font-weight: 300;
+        text-decoration: underline;
+        margin: 0;
+    }
     ul {
         margin: 0;
     }

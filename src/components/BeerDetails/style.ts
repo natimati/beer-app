@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
     gap: 40px;
     justify-content: center;
     justify-items: center;
+
+    ${props => props.theme.breakpoints.mobile} {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 `;
 
 export const ImageContainer = styled.div<ImageProps>`
@@ -23,14 +28,24 @@ export const ImageContainer = styled.div<ImageProps>`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    ${props => props.theme.breakpoints.mobile} {
+        height: 500px;
+    }
 `;
 
 export const DescritpionContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
     gap: 20px;
+    margin-bottom: 20px;
     p{
-        margin-bottom: 0;
+        margin: 0 10px;
+    }
+
+    ${props => props.theme.breakpoints.laptop} {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 `;
 
