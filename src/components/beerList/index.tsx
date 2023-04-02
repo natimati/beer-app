@@ -4,6 +4,7 @@ import { BeerImage, BeerImageContainer, Container, DecoratorDiv,  Wrapper } from
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Loader from "../Loader";
 import Pagination from "../Pagination";
+import { useEffect } from "react";
 
 function BeerList() {
   const [search] = useSearchParams();
@@ -13,7 +14,13 @@ function BeerList() {
     return getBeers(currentPage)
   });
 
-  
+  useEffect(() => {
+    const page = Number(search.get('page'));
+    if (page <= 0) {
+      navigate('/')
+    }
+    return 
+  },[navigate, search])
 
   const onBeerClick = (id: number) => {
     navigate(`/beer-details/${id}`)
