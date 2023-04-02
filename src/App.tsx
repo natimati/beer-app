@@ -2,7 +2,6 @@ import './App.css';
 import BeerList from './components/BeerList';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Header from './components/Header';
-import Pagination from './components/Pagination';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,7 +22,6 @@ const router = createBrowserRouter([
       <>
         <Header />
         <BeerList />
-        <Pagination />
       </>
   },
   {

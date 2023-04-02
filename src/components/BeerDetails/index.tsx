@@ -2,15 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getBeerById } from "../../api";
 import { BeerName, DescritpionContainer, ImageContainer, Tagline, Wrapper } from "./style";
+import Loader from "../Loader";
 
 function BeerDetails() {
   const { beerId } = useParams();
-  const { data: currentBeer } = useQuery(['beer', beerId], () => {
+  const { data: currentBeer, isLoading } = useQuery(['beer', beerId], () => {
     if (!beerId) {
       return null
     }
     return getBeerById(Number(beerId))
   })
+  if (isLoading) {
+    return <Loader /> 
+  }
   if (!currentBeer) {
     return <p>sorry there is no such beer </p>
   }

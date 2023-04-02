@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getBeers, getFirstTwelveBeers } from "../../api";
 import { BeerImage, BeerImageContainer, Container, DecoratorDiv,  Wrapper } from "./style";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Loader from "../Loader";
+import Pagination from "../Pagination";
 
 function BeerList() {
   const [search] = useSearchParams();
@@ -19,8 +21,13 @@ function BeerList() {
   const onBeerClick = (id: number) => {
     navigate(`/beer-details/${id}`)
   } 
+
+  if (isLoading) {
+    return <Loader />
+  }
   if (beers) {
     return (
+      <>
         <Wrapper>
           {beers.map(beer => {
             return (
@@ -35,6 +42,8 @@ function BeerList() {
             )
           })}
         </Wrapper>
+        <Pagination /> 
+      </>
     )
   }
   return <></>
