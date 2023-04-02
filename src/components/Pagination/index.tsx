@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useSearchParams } from "react-router-dom";
-import { Container, CurrentPage, IconContainer } from "./style";
+import { Container, CurrentPage, IconContainer, MobileContainer } from "./style";
 
 function Pagination() {
   const [search, setSearch] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(Number(search.get('page')) || 1);
 
   const iconSize = 20;
+  const mobileIconSize = 40;
   const isLeftArrowVisible = currentPage !== 1 ? true : false;
 
   const onNextPageClick = (): void => {
@@ -23,6 +24,7 @@ function Pagination() {
   };
 
   return (
+    <>
     <Container>
       <IconContainer isOnTheFirstPage={!isLeftArrowVisible}>
         <FaChevronLeft size={iconSize} onClick={onPreviousPageClick} />
@@ -31,7 +33,17 @@ function Pagination() {
         <p>{currentPage}</p>
       </CurrentPage>
       <FaChevronRight size={iconSize} onClick={onNextPageClick} />
-    </Container>
+      </Container>
+      <MobileContainer>
+        <IconContainer isOnTheFirstPage={!isLeftArrowVisible}>
+          <FaChevronLeft size={mobileIconSize} onClick={onPreviousPageClick} />
+        </IconContainer>
+        <CurrentPage>
+          <p>{currentPage}</p>
+        </CurrentPage>
+        <FaChevronRight size={mobileIconSize} onClick={onNextPageClick} />
+      </MobileContainer>
+    </>
   )
 }
 

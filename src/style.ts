@@ -42,11 +42,14 @@ export const GlobaleStyle = createGlobalStyle`
 
     h4 {
         font-weight: 300;
-        text-decoration: underline;
         margin: 0;
+
+         ${theme.breakpoints.laptop} {
+            text-decoration: underline;
+         }
     }
     ul {
-        margin: 0;
+        margin: 5px 0;
     }
     li {
         margin: 0;

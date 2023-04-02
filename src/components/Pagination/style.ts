@@ -10,6 +10,11 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 50px;
+
+    ${props => props.theme.breakpoints.tablet} {
+        display: none;
+    }
 `;
 
 export const CurrentPage = styled.div`
@@ -26,8 +31,25 @@ export const CurrentPage = styled.div`
         font-size: 12px;
         margin: 0;
     }
+
+    ${props => props.theme.breakpoints.tablet} {
+        width: 50px;
+        height: 50px;
+
+        p {
+            font-size: 20px;
+        }
+    }
 `;
 
 export const IconContainer = styled.div<PageProps>`
     visibility: ${props => props.isOnTheFirstPage ? 'hidden' : 'visible'}
+`;
+
+export const MobileContainer = styled(Container)`
+    display: none;
+
+    ${props => props.theme.breakpoints.tablet} {
+        display: flex;
+    }
 `;
