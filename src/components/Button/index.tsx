@@ -1,8 +1,8 @@
-import { FaChevronRight } from 'react-icons/fa';
 import { StyledButton, Container } from './style'
+import { ReactNode } from 'react';
 interface ButtonProps {
   onButtonClick: () => void
-  buttonText: string;
+  children: ReactNode;
   position: string;
 }
 
@@ -10,8 +10,7 @@ function Button(props: ButtonProps) {
   return (
     <Container position={props.position}>
       <StyledButton onClick={props.onButtonClick}>
-        <FaChevronRight size={25} />
-        {props.buttonText}
+        {props.children}
       </StyledButton>
     </Container>
   )
