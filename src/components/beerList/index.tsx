@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getBeers, getFirstTwelveBeers } from "../../api";
+import { getBeers } from "../../api";
 import { BeerImage, BeerImageContainer, Container, DecoratorDiv,  Wrapper } from "./style";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Loader from "../Loader";
@@ -8,13 +8,11 @@ import Pagination from "../Pagination";
 function BeerList() {
   const [search] = useSearchParams();
   const navigate = useNavigate();
-  const currentPage = search.get('page');
+  const currentPage = search.get('page') || '1';
 
 
   const { data: beers, isLoading } = useQuery(["beers", currentPage], () => {
-    if (!currentPage) {
-      return getFirstTwelveBeers()
-    } 
+    
     return getBeers(currentPage)
   } );
 

@@ -9,7 +9,22 @@ export const Wrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     justify-content: center;
-    justify-items: center;
+    justify-items: stretch;
+
+    ${props => props.theme.breakpoints.laptop} {
+        padding: 25px 50px;
+        gap: 40px;
+    }
+
+     ${props => props.theme.breakpoints.tablet} {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        padding: 25px;
+     }
+
+    ${props => props.theme.breakpoints.mobile} {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const Container = styled.div`
@@ -20,14 +35,17 @@ export const Container = styled.div`
     text-align: center;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
-    max-width: 300px;
-    width: 100%;
 `;
 
 export const BeerImageContainer = styled.div`
-    max-height: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
+
+    ${props => props.theme.breakpoints.tablet} {
+        height: 150px;
+        align-self: center;
+    }
 `;
 
 export const BeerImage = styled.img`
@@ -39,4 +57,9 @@ export const DecoratorDiv = styled.div`
     min-height: 20px;
     background-repeat: no-repeat;
     background-position: 50%;
+    background-size: contain;
+
+    ${props => props.theme.breakpoints.mobile} {
+        min-height: 15px;
+    }
 `;
