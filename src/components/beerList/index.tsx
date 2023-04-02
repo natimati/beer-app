@@ -9,12 +9,11 @@ function BeerList() {
   const [search] = useSearchParams();
   const navigate = useNavigate();
   const currentPage = search.get('page') || '1';
-
-
   const { data: beers, isLoading } = useQuery(["beers", currentPage], () => {
-    
     return getBeers(currentPage)
-  } );
+  });
+
+  
 
   const onBeerClick = (id: number) => {
     navigate(`/beer-details/${id}`)
@@ -40,7 +39,7 @@ function BeerList() {
             )
           })}
         </Wrapper>
-        <Pagination /> 
+        <Pagination />
       </>
     )
   }

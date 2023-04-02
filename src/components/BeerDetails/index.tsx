@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { getBeerById } from "../../api";
+import { useNavigate, useParams } from "react-router-dom";
+import { getBeerById, getRandomBeer } from "../../api";
 import { BeerName, DescritpionContainer, ImageContainer, Tagline, Wrapper } from "./style";
 import Loader from "../Loader";
+import Button from "../Button";
 
 function BeerDetails() {
   const { beerId } = useParams();
@@ -12,14 +13,30 @@ function BeerDetails() {
     }
     return getBeerById(Number(beerId))
   })
+  const { data: randomBeer } = useQuery(['beer'], getRandomBeer);
+  const navigate = useNavigate()
+
+  const onRandomButtonClick = () => {
+    if (randomBeer) {
+      navigate(`/beer-details/${randomBeer[0].id}`)
+    }
+    return
+  };
+
+  const onNextBeerButtonClick = (id: number) => {
+    navigate(`/beer-details/${id + 1}`)
+  }
+
   if (isLoading) {
     return <Loader /> 
   }
   if (!currentBeer) {
-    return <p>sorry there is no such beer </p>
+    return <Button onButtonClick={onRandomButtonClick} buttonText="go to random beer" position="center" />
   }
   const beer = currentBeer[0];
+
   return (
+    <>
     <Wrapper>
       <ImageContainer url={beer.image_url || '/assets/beer-avatar.png'} />
       <div>
@@ -41,15 +58,15 @@ function BeerDetails() {
           <h4>Ingredients:</h4>
           <div>
             <p>{'Malt: '}</p>
-            <ul>{beer.ingredients.malt.map((malt, index) => {
+            <ul>{beer.ingredients.malt.map(malt => {
               return (
-                <li key={index}>{malt.name}: {malt.amount.value}, {malt.amount.unit}</li>
+                <li key={malt.name}>{malt.name}: {malt.amount.value}, {malt.amount.unit}</li>
               )
             })}</ul>
             <p>{'Hops: '}</p>
-            <ul>{beer.ingredients.hops.map((hops, index) => {
+            <ul>{beer.ingredients.hops.map(hops => {
               return (
-                <li key={index}>{hops.name}: {hops.amount.value}, {hops.amount.unit}</li>
+                <li key={hops.name}>{hops.name}: {hops.amount.value}, {hops.amount.unit}</li>
               )
             })}</ul>
             <p>Yeast:</p> <ul><li>{beer.ingredients.yeast}</li></ul>
@@ -68,7 +85,9 @@ function BeerDetails() {
           <p>{beer.brewers_tips}</p>
         </DescritpionContainer>
       </div>
-    </Wrapper>
+      </Wrapper>
+      <Button onButtonClick={() => onNextBeerButtonClick(beer.id)} buttonText="See next beer" position="flex-end" />
+    </>
   )
 }
 

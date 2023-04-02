@@ -15,3 +15,8 @@ export async function getBeerById(id: number): Promise<Beer[]> {
   const data = await api.get(`beers/${id}`).json<Beer[]>();
   return data;
 };
+
+export async function getRandomBeer(): Promise<Beer[]> {
+  const data = await api.get('beers/random').json<Beer[]>();
+  return data;
+}
