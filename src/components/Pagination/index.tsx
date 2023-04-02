@@ -5,7 +5,7 @@ import { Container, CurrentPage, IconContainer } from "./style";
 
 function Pagination() {
   const [search, setSearch] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(Number(search.get('page')));
+  const [currentPage, setCurrentPage] = useState(Number(search.get('page')) || 1);
 
   const iconSize = 20;
   const isLeftArrowVisible = currentPage !== 1 ? true : false;
