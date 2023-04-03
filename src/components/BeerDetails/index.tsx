@@ -17,6 +17,7 @@ function BeerDetails() {
   })
   const { data: randomBeer } = useQuery(['beer'], getRandomBeer);
   const navigate = useNavigate();
+  
   const onRandomButtonClick = () => {
     if (randomBeer) {
       navigate(`/beer-details/${randomBeer[0].id}`)

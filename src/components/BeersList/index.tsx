@@ -6,6 +6,7 @@ import Loader from "../Loader";
 import Pagination from "../Pagination";
 import { useEffect } from "react";
 import FavouriteButton from "../FavouriteButton";
+import EmptyState from "../EmptyState";
 
 function BeerList() {
   const [search] = useSearchParams();
@@ -32,6 +33,9 @@ function BeerList() {
     return <Loader />
   }
   if (beers) {
+    if (beers.length === 0) {
+      return <EmptyState />
+    }
     return (
       <>
         <Wrapper>
