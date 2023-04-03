@@ -37,6 +37,10 @@ export const Container = styled.div`
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
 `;
 
+export const ButtonContainer = styled.div`
+    align-self: flex-end;
+`;
+
 export const BeerImageContainer = styled.div`
     height: 200px;
     display: flex;

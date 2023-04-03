@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { getBeerById, getRandomBeer } from "../../api";
-import { BeerName, DescritpionContainer, ImageContainer, Tagline, Wrapper } from "./style";
+import { BeerName, DescritpionContainer, ImageContainer, Tagline, TitleContainer, Wrapper } from "./style";
 import Loader from "../Loader";
 import Button from "../Button";
 import { FaChevronRight } from "react-icons/fa";
+import FavouriteButton from "../FavouriteButton";
 
 function BeerDetails() {
   const { beerId } = useParams();
@@ -15,8 +16,7 @@ function BeerDetails() {
     return getBeerById(Number(beerId))
   })
   const { data: randomBeer } = useQuery(['beer'], getRandomBeer);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
   const onRandomButtonClick = () => {
     if (randomBeer) {
       navigate(`/beer-details/${randomBeer[0].id}`)
@@ -45,8 +45,11 @@ function BeerDetails() {
       <Wrapper>
         <ImageContainer url={beer.image_url || '/assets/beer-avatar.png'} />
         <div>
-          <BeerName>{beer.name}</BeerName>
-          <Tagline>{beer.tagline}</Tagline>
+          <TitleContainer>
+            <BeerName>{beer.name}</BeerName>
+            <FavouriteButton id={beer.id} />
+          </TitleContainer>
+            <Tagline>{beer.tagline}</Tagline>
           <DescritpionContainer>
             <h4>Description:</h4>
             <p>{beer.description}</p>

@@ -35,6 +35,11 @@ export const ImageContainer = styled.div<ImageProps>`
     }
 `;
 
+export const TitleContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const DescritpionContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -58,4 +63,5 @@ export const Tagline = styled.p`
     font-style: italic;
     margin-top: 5px;
     font-size: 1.3em;
+    margin-bottom: 25px;
 `;
